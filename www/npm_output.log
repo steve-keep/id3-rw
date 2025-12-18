@@ -30,3 +30,22 @@ assets by status 573 KiB [cached] 3 assets
 asset index.html 811 bytes [emitted] [from: index.html] [copied]
 cached modules 154 KiB (javascript) 329 KiB (webassembly) 34 KiB (runtime) [cached] 46 modules
 webpack 5.104.0 compiled successfully in 49 ms
+assets by status 573 KiB [cached] 4 assets
+cached modules 154 KiB (javascript) 329 KiB (webassembly) 34 KiB (runtime) [cached] 46 modules
+webpack 5.104.0 compiled successfully in 85 ms
+assets by status 573 KiB [cached] 4 assets
+cached modules 154 KiB (javascript) 329 KiB (webassembly) 34 KiB (runtime) [cached] 46 modules
+webpack 5.104.0 compiled successfully in 38 ms
+assets by status 360 KiB [cached] 3 assets
+assets by path . 218 KiB
+  asset bundle.js 214 KiB [emitted] (name: main)
+  asset main.933c14baa64f7c1f5901.hot-update.js 3.96 KiB [emitted] [immutable] [hmr] (name: main)
+  asset main.933c14baa64f7c1f5901.hot-update.json 28 bytes [emitted] [immutable] [hmr]
+Entrypoint main 218 KiB = bundle.js 214 KiB main.933c14baa64f7c1f5901.hot-update.js 3.96 KiB
+cached modules 152 KiB (javascript) 329 KiB (webassembly) [cached] 29 modules
+runtime modules 34 KiB 16 modules
+./index.js 2.64 KiB [built] [code generated]
+webpack 5.104.0 compiled successfully in 216 ms
+assets by status 573 KiB [cached] 4 assets
+cached modules 154 KiB (javascript) 329 KiB (webassembly) 34 KiB (runtime) [cached] 46 modules
+webpack 5.104.0 compiled successfully in 41 ms
