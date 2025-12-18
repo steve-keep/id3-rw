@@ -1,6 +1,8 @@
-const path = require('path');
+import { describe, it, expect } from 'vitest';
+import fs from 'fs';
+import path from 'path';
 
-const mp3 = path.join(__dirname, 'tis-a-faded-picture.mp3');
+const mp3 = path.join('tests', 'tis-a-faded-picture.mp3');
 
 const expectedMetadata = {
   "artist": "Florrie Forde\r",
@@ -8,21 +10,19 @@ const expectedMetadata = {
   "album": "Edison Amberol: 12255\r",
 };
 
-jest.setTimeout(30000);
-
 describe('Reading a tag', () => {
-  beforeAll(async () => {
-    await page.goto('http://localhost:8080/', { waitUntil: 'load' });
-    await page.waitForSelector('#file-input');
-    const fileInput = await page.$('#file-input');
-    await fileInput.uploadFile(mp3);
-    await page.waitForSelector('#metadata-output:not(:empty)');
-  });
-
-  it('should output the correct text metadata', async () => {
-    expect.assertions(1);
-    const metadataText = await page.$eval('#metadata-output', el => el.textContent);
-    const metadata = JSON.parse(metadataText);
-    expect(metadata).toEqual(expect.objectContaining(expectedMetadata));
+  it('should extract the correct text metadata', async () => {
+    const { TagController } = await import('id3-rw');
+    const mp3Buffer = fs.readFileSync(mp3);
+    const uint8Array = new Uint8Array(mp3Buffer);
+    const tagController = TagController.from(uint8Array);
+    const metadata = tagController.getMetadata();
+    const extractedMetadata = {
+      artist: metadata.artist,
+      title: metadata.title,
+      album: metadata.album,
+    };
+    expect(extractedMetadata).toEqual(expectedMetadata);
+    tagController.free();
   });
 });

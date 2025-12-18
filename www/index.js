@@ -1,50 +1,74 @@
 import('id3-rw').then(({ TagController }) => {
   console.log('Wasm module loaded');
-  const fileInput = document.getElementById('file-input');
-  const metadataOutput = document.getElementById('metadata-output');
+  const startButton = document.getElementById('start-button');
+  const timingOutput = document.getElementById('timing-output');
+  const metadataTableBody = document.querySelector('#metadata-table tbody');
 
-  fileInput.addEventListener('change', async (event) => {
-    const file = event.target.files[0];
-    if (!file) {
+  startButton.addEventListener('click', async () => {
+    if (!window.showDirectoryPicker) {
+      alert('File System Access API is not supported in this browser.');
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = async (event) => {
-      const arrayBuffer = event.target.result;
-      const uint8Array = new Uint8Array(arrayBuffer);
-      let tagController;
-      try {
-        tagController = TagController.from(uint8Array);
-        const metadata = tagController.getMetadata();
-        const metadataString = JSON.stringify({
-          artist: metadata.artist,
-          title: metadata.title,
-          album: metadata.album,
-          album_artist: metadata.albumArtist,
-          genre: metadata.genre,
-          track_index: metadata.track_index,
-          track_count: metadata.track_count,
-          disc_index: metadata.disc_index,
-          disc_count: metadata.disc_count,
-          year: metadata.year,
-          date_recorded: metadata.dateRecorded,
-          date_released: metadata.dateReleased,
-          duration: metadata.duration,
-          publisher: metadata.publisher,
-          album_cover: metadata.albumCover ? 'present' : 'not present',
-          lyrics: metadata.lyrics.length > 0 ? 'present' : 'not present',
-          comments: metadata.comments.length > 0 ? 'present' : 'not present'
-        }, null, 2);
-        metadataOutput.textContent = metadataString;
-      } catch (e) {
-        metadataOutput.textContent = `Error: ${e.message}`;
-      } finally {
-        if (tagController) {
-          tagController.free();
+    try {
+      const directoryHandle = await window.showDirectoryPicker();
+      timingOutput.textContent = 'Scanning...';
+      metadataTableBody.innerHTML = '';
+      const startTime = performance.now();
+      let fileCount = 0;
+
+      for await (const entry of directoryHandle.values()) {
+        if (entry.kind === 'file' && entry.name.endsWith('.mp3')) {
+          fileCount++;
+          const file = await entry.getFile();
+          const arrayBuffer = await file.arrayBuffer();
+          const uint8Array = new Uint8Array(arrayBuffer);
+          let tagController;
+          try {
+            tagController = TagController.from(uint8Array);
+            const metadata = tagController.getMetadata();
+
+            const row = document.createElement('tr');
+            const titleCell = document.createElement('td');
+            titleCell.textContent = metadata.title || '';
+            row.appendChild(titleCell);
+
+            const artistCell = document.createElement('td');
+            artistCell.textContent = metadata.artist || '';
+            row.appendChild(artistCell);
+
+            const albumCell = document.createElement('td');
+            albumCell.textContent = metadata.album || '';
+            row.appendChild(albumCell);
+
+            const yearCell = document.createElement('td');
+            yearCell.textContent = metadata.year || '';
+            row.appendChild(yearCell);
+
+            const genreCell = document.createElement('td');
+            genreCell.textContent = metadata.genre || '';
+            row.appendChild(genreCell);
+
+            metadataTableBody.appendChild(row);
+          } catch (e) {
+            console.error(`Error processing ${entry.name}:`, e);
+          } finally {
+            if (tagController) {
+              tagController.free();
+            }
+          }
         }
       }
-    };
-    reader.readAsArrayBuffer(file);
+
+      const endTime = performance.now();
+      const totalTime = (endTime - startTime) / 1000;
+      timingOutput.textContent = `Scanned ${fileCount} files in ${totalTime.toFixed(2)} seconds.`;
+
+    } catch (err) {
+      if (err.name !== 'AbortError') {
+        console.error('Error selecting directory:', err);
+        timingOutput.textContent = `Error: ${err.message}`;
+      }
+    }
   });
 });
