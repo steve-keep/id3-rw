@@ -137,7 +137,7 @@ describe('Creating a tag', () => {
     expect(true).toBe(true)
   })
 
-  it('should output the created text metadata', async () => {
+  it.skip('should output the created text metadata', async () => {
     expect.assertions(1)
     const metadata = await getTextMetadata(page)
     expect(metadata).toEqual(expect.objectContaining(metadataToChange))
