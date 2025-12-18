@@ -9,24 +9,26 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v4
+    - name: Install Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install stable Rust
+        node-version: '18'
+    - name: Install stable Rust and wasm-pack
       uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
         default: true
         override: true
     - uses: jetli/wasm-pack-action@v0.3.0
-    - name: Run setup script
-      run: make setup
-    - name: Run build-website script
-      run: make build-website
+    - name: Build Wasm package
+      run: make build
+    - name: Install website dependencies
+      run: cd www && npm install
+    - name: Build website
+      run: cd www && npm run build
     - name: Deploy website
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./www/dist

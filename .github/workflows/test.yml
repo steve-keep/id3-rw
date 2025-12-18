@@ -3,28 +3,24 @@ name: Test
 on: [push, pull_request]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x]
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v4
+    - name: Install Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install stable Rust
+        node-version: '18'
+    - name: Install stable Rust and wasm-pack
       uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
         default: true
         override: true
     - uses: jetli/wasm-pack-action@v0.3.0
-    - name: Run setup script
-      run: make setup
-    - name: Run test script
-      run: make test
+    - name: Build Wasm package
+      run: make build
+    - name: Install website dependencies
+      run: cd www && npm install
+    - name: Run tests
+      run: cd www && npm test

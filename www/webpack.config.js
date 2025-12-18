@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './index.js',
@@ -12,5 +13,12 @@ module.exports = {
   },
   experiments: {
     asyncWebAssembly: true
-  }
+  },
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: 'index.html', to: 'index.html' },
+      ],
+    }),
+  ],
 };
