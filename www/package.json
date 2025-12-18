@@ -9,8 +9,6 @@
     "id3-rw": "file:../package"
   },
   "devDependencies": {
-    "@playwright/test": "^1.57.0",
-    "@vitest/browser-playwright": "^4.0.16",
     "copy-webpack-plugin": "^12.0.2",
     "vite-plugin-wasm": "^3.5.0",
     "vitest": "^4.0.16",
