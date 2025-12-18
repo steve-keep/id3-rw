@@ -1,29 +1,24 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const path = require('path')
+const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: {
-    'analysing-your-whole-music-library/bootstrap': './src/analysing-your-whole-music-library/bootstrap.js',
-    'id3-editor/bootstrap': './src/id3-editor/bootstrap.js',
-    'for-testing/bootstrap': './src/for-testing/bootstrap.js'
-  },
+  entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js'
+    filename: 'bundle.js',
   },
   mode: 'development',
-  plugins: [
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: '**/*.html', context: 'src/' },
-        { from: '**/*.css', context: 'src/' }
-      ]
-    })
-  ],
+  devServer: {
+    static: './',
+  },
   experiments: {
-    // IMPORTANT! Without this, webpack is not able to load WebAssembly.
-    // asyncWebAssembly is currently not supported by wasm-bindgen,
-    // see https://github.com/rustwasm/wasm-bindgen/issues/2343
-    syncWebAssembly: true
-  }
-}
+    asyncWebAssembly: true
+  },
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: 'index.html', to: 'index.html' },
+      ],
+    }),
+  ],
+};
