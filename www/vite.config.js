@@ -3,11 +3,13 @@ import wasm from 'vite-plugin-wasm';
 import topLevelAwait from 'vite-plugin-top-level-await';
 
 export default defineConfig(({ mode }) => {
+  const plugins = [
+    wasm(),
+    topLevelAwait()
+  ];
+
   const config = {
-    plugins: [
-      wasm(),
-      topLevelAwait()
-    ],
+    plugins,
     server: {
       port: 8080,
     },
@@ -17,10 +19,7 @@ export default defineConfig(({ mode }) => {
     },
     worker: {
       format: 'es',
-      plugins: () => [
-        wasm(),
-        topLevelAwait()
-      ],
+      plugins: () => plugins,
     },
     esbuild: {
       supported: {
