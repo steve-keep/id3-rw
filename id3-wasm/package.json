@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "lint": "eslint src/**/*.ts",
+    "lint": "npx eslint src/**/*.ts",
     "build:ts": "esbuild src/index.ts --bundle --outfile=dist/index.js --format=esm --platform=browser --external:*.wasm"
   },
   "repository": {
