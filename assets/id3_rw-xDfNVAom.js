@@ -1,6 +1,6 @@
 let x, f, F, v, b, P, U, B, O, $, N, E, V, ge;
 let __tla = (async ()=>{
-    var M = "/assets/id3_rw_bg-C1FiBZcf.wasm", z = async (a = {}, t)=>{
+    var M = "/id3-wasm/assets/id3_rw_bg-C1FiBZcf.wasm", z = async (a = {}, t)=>{
         let _;
         if (t.startsWith("data:")) {
             const n = t.replace(/^data:.*?base64,/, "");

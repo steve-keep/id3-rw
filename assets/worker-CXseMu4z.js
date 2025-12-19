@@ -3,7 +3,7 @@
     self.onmessage = async (n)=>{
         const { type: l, payload: i } = n.data;
         if (l === "init") {
-            const e = await import("./id3_rw-BZDNj7Zl.js").then(async (m)=>{
+            const e = await import("./id3_rw-xDfNVAom.js").then(async (m)=>{
                 await m.__tla;
                 return m;
             });
