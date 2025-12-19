@@ -5,25 +5,20 @@ import topLevelAwait from 'vite-plugin-top-level-await';
 export default defineConfig({
   plugins: [
     wasm(),
-    topLevelAwait()
+    topLevelAwait(),
   ],
+  worker: {
+    plugins: () => [
+      wasm(),
+      topLevelAwait(),
+    ],
+  },
   server: {
     port: 8080,
   },
-  build: {
-    outDir: 'dist',
-    target: 'esnext',
-  },
-  worker: {
-    format: 'es',
-    plugins: () => [
-      wasm(),
-      topLevelAwait()
-    ],
-  },
-  esbuild: {
-    supported: {
-      'top-level-await': true,
+  resolve: {
+    alias: {
+      'id3-rw': '/package/wasm/id3_rw.js',
     },
   },
 });
