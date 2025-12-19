@@ -6,7 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "id3-rw": "file:../package"
+    "id3-wasm": "file:../id3-wasm"
   },
   "devDependencies": {
     "vite": "^7.3.0",
