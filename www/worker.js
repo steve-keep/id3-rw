@@ -7,7 +7,7 @@ self.onmessage = async (event) => {
   if (type === 'init') {
     // The wasm-bindgen generated glue code needs to be imported to bootstrap the module.
 // The wasm module is imported by the build tool (Vite).
-    const wasm = await import('id3-rw');
+    const wasm = await import('id3-wasm');
     await wasm.default(payload.module);
     id3Module = wasm;
     self.postMessage({ type: 'ready' });
