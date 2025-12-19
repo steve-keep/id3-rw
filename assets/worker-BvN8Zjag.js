@@ -43,27 +43,27 @@
     }
     function v(a, t) {
         const e = t(a.length * 1, 1) >>> 0;
-        return y().set(a, e / 1), l = a.length, e;
+        return y().set(a, e / 1), c = a.length, e;
     }
     function m(a, t, e) {
         if (e === void 0) {
-            const c = A.encode(a), g = t(c.length, 1) >>> 0;
-            return y().subarray(g, g + c.length).set(c), l = c.length, g;
+            const l = A.encode(a), g = t(l.length, 1) >>> 0;
+            return y().subarray(g, g + l.length).set(l), c = l.length, g;
         }
         let r = a.length, o = t(r, 1) >>> 0;
         const d = y();
         let s = 0;
         for(; s < r; s++){
-            const c = a.charCodeAt(s);
-            if (c > 127) break;
-            d[o + s] = c;
+            const l = a.charCodeAt(s);
+            if (l > 127) break;
+            d[o + s] = l;
         }
         if (s !== r) {
             s !== 0 && (a = a.slice(s)), o = e(o, r, r = s + a.length * 3, 1) >>> 0;
-            const c = y().subarray(o + s, o + r), g = A.encodeInto(a, c);
+            const l = y().subarray(o + s, o + r), g = A.encodeInto(a, l);
             s += g.written, o = e(o, r, s, 1) >>> 0;
         }
-        return l = s, o;
+        return c = s, o;
     }
     function p(a) {
         const t = _.__wbindgen_externrefs.get(a);
@@ -90,7 +90,7 @@
             written: e.length
         };
     });
-    let l = 0;
+    let c = 0;
     const R = typeof FinalizationRegistry > "u" ? {
         register: ()=>{},
         unregister: ()=>{}
@@ -335,25 +335,25 @@
             _.tagcontroller_addLyrics(this.__wbg_ptr, e);
         }
         setArtist(t) {
-            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = l;
+            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = c;
             _.tagcontroller_setArtist(this.__wbg_ptr, e, r);
         }
         removeYear() {
             _.tagcontroller_removeYear(this.__wbg_ptr);
         }
         static fromPartial(t, e) {
-            const r = v(t, _.__wbindgen_malloc), o = l;
-            var d = w(e) ? 0 : v(e, _.__wbindgen_malloc), s = l;
-            const c = _.tagcontroller_fromPartial(r, o, d, s);
-            if (c[2]) throw p(c[1]);
-            return b.__wrap(c[0]);
+            const r = v(t, _.__wbindgen_malloc), o = c;
+            var d = w(e) ? 0 : v(e, _.__wbindgen_malloc), s = c;
+            const l = _.tagcontroller_fromPartial(r, o, d, s);
+            if (l[2]) throw p(l[1]);
+            return b.__wrap(l[0]);
         }
         getMetadata() {
             const t = _.tagcontroller_getMetadata(this.__wbg_ptr);
             return x.__wrap(t);
         }
         putTagInto(t) {
-            const e = v(t, _.__wbindgen_malloc), r = l, o = _.tagcontroller_putTagInto(this.__wbg_ptr, e, r);
+            const e = v(t, _.__wbindgen_malloc), r = c, o = _.tagcontroller_putTagInto(this.__wbg_ptr, e, r);
             if (o[2]) throw p(o[1]);
             return p(o[0]);
         }
@@ -373,7 +373,7 @@
             _.tagcontroller_removeArtist(this.__wbg_ptr);
         }
         setPublisher(t) {
-            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = l;
+            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = c;
             _.tagcontroller_setPublisher(this.__wbg_ptr, e, r);
         }
         setDiscCount(t) {
@@ -389,7 +389,7 @@
             _.tagcontroller_setTrackIndex(this.__wbg_ptr, t);
         }
         setAlbumArtist(t) {
-            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = l;
+            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = c;
             _.tagcontroller_setAlbumArtist(this.__wbg_ptr, e, r);
         }
         removeDiscCount() {
@@ -399,11 +399,11 @@
             _.tagcontroller_removeDiscIndex(this.__wbg_ptr);
         }
         setDateRecorded(t) {
-            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = l, o = _.tagcontroller_setDateRecorded(this.__wbg_ptr, e, r);
+            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = c, o = _.tagcontroller_setDateRecorded(this.__wbg_ptr, e, r);
             if (o[1]) throw p(o[0]);
         }
         setDateReleased(t) {
-            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = l, o = _.tagcontroller_setDateReleased(this.__wbg_ptr, e, r);
+            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = c, o = _.tagcontroller_setDateReleased(this.__wbg_ptr, e, r);
             if (o[1]) throw p(o[0]);
         }
         removeTrackCount() {
@@ -420,7 +420,7 @@
             return b.__wrap(t);
         }
         static from(t) {
-            const e = v(t, _.__wbindgen_malloc), r = l, o = _.tagcontroller_from(e, r);
+            const e = v(t, _.__wbindgen_malloc), r = c, o = _.tagcontroller_from(e, r);
             if (o[2]) throw p(o[1]);
             return b.__wrap(o[0]);
         }
@@ -428,21 +428,21 @@
             _.tagcontroller_setYear(this.__wbg_ptr, t);
         }
         setAlbum(t) {
-            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = l;
+            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = c;
             _.tagcontroller_setAlbum(this.__wbg_ptr, e, r);
         }
         setGenre(t) {
-            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = l;
+            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = c;
             _.tagcontroller_setGenre(this.__wbg_ptr, e, r);
         }
         setTitle(t) {
-            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = l;
+            const e = m(t, _.__wbindgen_malloc, _.__wbindgen_realloc), r = c;
             _.tagcontroller_setTitle(this.__wbg_ptr, e, r);
         }
     }
     Symbol.dispose && (b.prototype[Symbol.dispose] = b.prototype.free);
     function Z(a) {
-        const t = v(a, _.__wbindgen_malloc), e = l;
+        const t = v(a, _.__wbindgen_malloc), e = c;
         return _.hasId3v2Tag(t, e) !== 0;
     }
     function E(a, t) {
@@ -478,7 +478,7 @@
             __wbg___wbindgen_throw_dd24417ed36fc46e: E,
             __wbindgen_init_externref_table: Y
         }
-    }, O), q = n.memory, J = n.__wbg_albumcovermetadatum_free, Q = n.__wbg_commentmetadatum_free, tt = n.__wbg_extendedtextmetadatum_free, et = n.__wbg_get_metadata_discCount, _t = n.__wbg_get_metadata_discIndex, rt = n.__wbg_get_metadata_duration, at = n.__wbg_get_metadata_trackCount, nt = n.__wbg_get_metadata_trackIndex, ot = n.__wbg_get_metadata_year, st = n.__wbg_metadata_free, ct = n.__wbg_set_metadata_discCount, lt = n.__wbg_set_metadata_discIndex, it = n.__wbg_set_metadata_duration, dt = n.__wbg_set_metadata_trackCount, gt = n.__wbg_set_metadata_trackIndex, mt = n.__wbg_set_metadata_year, bt = n.__wbg_tagcontroller_free, ut = n.albumcovermetadatum_data, wt = n.albumcovermetadatum_mimeType, ft = n.commentmetadatum_description, pt = n.commentmetadatum_lang, yt = n.commentmetadatum_text, ht = n.extendedtextmetadatum_description, xt = n.extendedtextmetadatum_value, vt = n.hasId3v2Tag, At = n.metadata_album, Tt = n.metadata_albumArtist, Ct = n.metadata_albumCover, It = n.metadata_artist, kt = n.metadata_comments, Dt = n.metadata_dateRecorded, Rt = n.metadata_dateReleased, Mt = n.metadata_genre, Ft = n.metadata_lyrics, zt = n.metadata_publisher, St = n.metadata_title, Et = n.tagcontroller_addLyrics, Ut = n.tagcontroller_from, Wt = n.tagcontroller_fromPartial, jt = n.tagcontroller_getMetadata, Lt = n.tagcontroller_new, Pt = n.tagcontroller_putTagInto, Yt = n.tagcontroller_removeAlbum, Bt = n.tagcontroller_removeAlbumArtist, Gt = n.tagcontroller_removeArtist, Ot = n.tagcontroller_removeDiscCount, $t = n.tagcontroller_removeDiscIndex, Nt = n.tagcontroller_removeGenre, Ht = n.tagcontroller_removeTitle, Kt = n.tagcontroller_removeTrackCount, Vt = n.tagcontroller_removeTrackIndex, Xt = n.tagcontroller_removeYear, Zt = n.tagcontroller_setAlbum, qt = n.tagcontroller_setAlbumArtist, Jt = n.tagcontroller_setArtist, Qt = n.tagcontroller_setDateRecorded, te = n.tagcontroller_setDateReleased, ee = n.tagcontroller_setDiscCount, _e = n.tagcontroller_setDiscIndex, re = n.tagcontroller_setDuration, ae = n.tagcontroller_setGenre, ne = n.tagcontroller_setPublisher, oe = n.tagcontroller_setTitle, se = n.tagcontroller_setTrackCount, ce = n.tagcontroller_setTrackIndex, le = n.tagcontroller_setYear, ie = n.__wbindgen_externrefs, de = n.__wbindgen_malloc, ge = n.__wbindgen_realloc, me = n.__externref_table_dealloc, be = n.__wbindgen_free, B = n.__wbindgen_start;
+    }, O), q = n.memory, J = n.__wbg_albumcovermetadatum_free, Q = n.__wbg_commentmetadatum_free, tt = n.__wbg_extendedtextmetadatum_free, et = n.__wbg_get_metadata_discCount, _t = n.__wbg_get_metadata_discIndex, rt = n.__wbg_get_metadata_duration, at = n.__wbg_get_metadata_trackCount, nt = n.__wbg_get_metadata_trackIndex, ot = n.__wbg_get_metadata_year, st = n.__wbg_metadata_free, lt = n.__wbg_set_metadata_discCount, ct = n.__wbg_set_metadata_discIndex, it = n.__wbg_set_metadata_duration, dt = n.__wbg_set_metadata_trackCount, gt = n.__wbg_set_metadata_trackIndex, mt = n.__wbg_set_metadata_year, bt = n.__wbg_tagcontroller_free, ut = n.albumcovermetadatum_data, wt = n.albumcovermetadatum_mimeType, ft = n.commentmetadatum_description, pt = n.commentmetadatum_lang, yt = n.commentmetadatum_text, ht = n.extendedtextmetadatum_description, xt = n.extendedtextmetadatum_value, vt = n.hasId3v2Tag, At = n.metadata_album, Tt = n.metadata_albumArtist, Ct = n.metadata_albumCover, It = n.metadata_artist, kt = n.metadata_comments, Dt = n.metadata_dateRecorded, Rt = n.metadata_dateReleased, Mt = n.metadata_genre, Ft = n.metadata_lyrics, zt = n.metadata_publisher, St = n.metadata_title, Et = n.tagcontroller_addLyrics, Ut = n.tagcontroller_from, Wt = n.tagcontroller_fromPartial, jt = n.tagcontroller_getMetadata, Lt = n.tagcontroller_new, Pt = n.tagcontroller_putTagInto, Yt = n.tagcontroller_removeAlbum, Bt = n.tagcontroller_removeAlbumArtist, Gt = n.tagcontroller_removeArtist, Ot = n.tagcontroller_removeDiscCount, $t = n.tagcontroller_removeDiscIndex, Nt = n.tagcontroller_removeGenre, Ht = n.tagcontroller_removeTitle, Kt = n.tagcontroller_removeTrackCount, Vt = n.tagcontroller_removeTrackIndex, Xt = n.tagcontroller_removeYear, Zt = n.tagcontroller_setAlbum, qt = n.tagcontroller_setAlbumArtist, Jt = n.tagcontroller_setArtist, Qt = n.tagcontroller_setDateRecorded, te = n.tagcontroller_setDateReleased, ee = n.tagcontroller_setDiscCount, _e = n.tagcontroller_setDiscIndex, re = n.tagcontroller_setDuration, ae = n.tagcontroller_setGenre, ne = n.tagcontroller_setPublisher, oe = n.tagcontroller_setTitle, se = n.tagcontroller_setTrackCount, le = n.tagcontroller_setTrackIndex, ce = n.tagcontroller_setYear, ie = n.__wbindgen_externrefs, de = n.__wbindgen_malloc, ge = n.__wbindgen_realloc, me = n.__externref_table_dealloc, be = n.__wbindgen_free, B = n.__wbindgen_start;
     var ue = Object.freeze({
         __proto__: null,
         __externref_table_dealloc: me,
@@ -492,8 +492,8 @@
         __wbg_get_metadata_trackIndex: nt,
         __wbg_get_metadata_year: ot,
         __wbg_metadata_free: st,
-        __wbg_set_metadata_discCount: ct,
-        __wbg_set_metadata_discIndex: lt,
+        __wbg_set_metadata_discCount: lt,
+        __wbg_set_metadata_discIndex: ct,
         __wbg_set_metadata_duration: it,
         __wbg_set_metadata_trackCount: dt,
         __wbg_set_metadata_trackIndex: gt,
@@ -552,8 +552,8 @@
         tagcontroller_setPublisher: ne,
         tagcontroller_setTitle: oe,
         tagcontroller_setTrackCount: se,
-        tagcontroller_setTrackIndex: ce,
-        tagcontroller_setYear: le
+        tagcontroller_setTrackIndex: le,
+        tagcontroller_setYear: ce
     });
     S(ue);
     B();
@@ -579,12 +579,12 @@
         if (t === "process") {
             const { file: r, HEAD_CHUNK_SIZE: o } = e, { TagController: d, hasId3v2Tag: s } = we;
             try {
-                const c = new Uint8Array(await r.slice(0, o).arrayBuffer());
+                const l = new Uint8Array(await r.slice(0, o).arrayBuffer());
                 let g;
-                s(c) || (g = r.size >= 128 ? new Uint8Array(await r.slice(r.size - 128).arrayBuffer()) : null);
+                s(l) || (g = r.size >= 128 ? new Uint8Array(await r.slice(r.size - 128).arrayBuffer()) : null);
                 let T;
                 try {
-                    T = d.fromPartial(c, g);
+                    T = d.fromPartial(l, g);
                     const u = T.getMetadata(), G = {
                         title: u.title || "",
                         artist: u.artist || "",
@@ -595,21 +595,28 @@
                     self.postMessage({
                         type: "result",
                         payload: {
-                            metadata: G
+                            metadata: G,
+                            fileName: r.name
                         }
                     });
                 } catch (u) {
                     self.postMessage({
                         type: "error",
-                        payload: `Error processing ${r.name}: ${u.message}`
+                        payload: {
+                            message: `Error processing ${r.name}: ${u.message}`,
+                            fileName: r.name
+                        }
                     });
                 } finally{
                     T && T.free();
                 }
-            } catch (c) {
+            } catch (l) {
                 self.postMessage({
                     type: "error",
-                    payload: `Failed to process file ${r.name}: ${c.message}`
+                    payload: {
+                        message: `Failed to process file ${r.name}: ${l.message}`,
+                        fileName: r.name
+                    }
                 });
             }
         }
