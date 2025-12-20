@@ -1,10 +1,4 @@
-let id3;
-
-if (process.env.VITEST) {
-  id3 = await import('id3-wasm/test-build');
-} else {
-  id3 = await import('id3-wasm');
-}
+import * as id3 from 'id3-wasm';
 
 // The wasm-pack module self-initializes when imported as an ES module.
 // No explicit `init()` call is required.

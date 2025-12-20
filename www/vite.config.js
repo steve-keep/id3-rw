@@ -31,11 +31,6 @@ export default defineConfig(({ mode }) => {
         'top-level-await': true,
       },
     },
-    test: {
-      alias: {
-        'id3-wasm': path.resolve(__dirname, '../id3-wasm/test-build'),
-      },
-    },
   };
 
   if (mode === 'production') {

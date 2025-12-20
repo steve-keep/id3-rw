@@ -13,8 +13,13 @@ build:
 	rm id3-wasm/wasm/README.md
 	rm id3-wasm/wasm/package.json
 	rm id3-wasm/wasm/.gitignore
-	make build-test
 
 build-test:
 	rm -rf id3-wasm/test-build
 	wasm-pack build --target nodejs --out-dir 'id3-wasm/test-build' --release
+
+test:
+	make build
+	make build-test
+	cp -r id3-wasm/test-build/* id3-wasm/dist/
+	npm test --prefix www
