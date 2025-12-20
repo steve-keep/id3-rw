@@ -13,6 +13,7 @@ build:
 	rm id3-wasm/wasm/README.md
 	rm id3-wasm/wasm/package.json
 	rm id3-wasm/wasm/.gitignore
+	make build-test
 
 build-test:
 	rm -rf id3-wasm/test-build
