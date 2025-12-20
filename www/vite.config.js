@@ -1,13 +1,20 @@
 import { defineConfig } from 'vite';
 import wasm from 'vite-plugin-wasm';
 import topLevelAwait from 'vite-plugin-top-level-await';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig(({ mode }) => {
+  const plugins = [
+    wasm(),
+    topLevelAwait()
+  ];
+
   const config = {
-    plugins: [
-      wasm(),
-      topLevelAwait()
-    ],
+    plugins,
     server: {
       port: 8080,
     },
@@ -17,10 +24,7 @@ export default defineConfig(({ mode }) => {
     },
     worker: {
       format: 'es',
-      plugins: () => [
-        wasm(),
-        topLevelAwait()
-      ],
+      plugins: () => plugins,
     },
     esbuild: {
       supported: {

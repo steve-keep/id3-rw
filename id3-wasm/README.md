@@ -1,0 +1,75 @@
+# id3-wasm
+Insanely quick ID3 reading & writing for JavaScript powered by WebAssembly.
+
+![Test](https://github.com/steve-keep/id3-wasm/workflows/Test/badge.svg?branch=master)
+![GitHub Pages](https://github.com/steve-keep/id3-wasm/workflows/GitHub%20Pages/badge.svg?event=push)
+
+![Screenshot of id3-wasm in action.](https://raw.githubusercontent.com/steve-keep/id3-wasm/master/demo-cropped.gif)
+
+## Demos
+Demos can be found on [id3-wasm's website](https://steve-keep.github.io/id3-wasm/).
+
+## Usage
+
+### Getting metadata
+```javascript
+import { getMetadataFrom } from 'id3-wasm'
+
+const url = 'https://upload.wikimedia.org/wikipedia/commons/b/bd/%27Tis_a_faded_picture_by_Florrie_Forde.mp3'
+
+await fetch(url).then(async response => {
+  const stream = response.body
+  const metadata = await getMetadataFrom(stream)
+  expectToContain(metadata, {
+    artist: "Florrie Forde\r",
+    title: "'Tis a faded picture\r",
+    album: "Edison Amberol: 12255\r"
+  })
+
+  // IMPORTANT! Always remember to destroy the metadata
+  // after you've got the properties you need,
+  // else you'll get a memory leak!
+  metadata.free()
+})
+```
+
+### Modifying audio metadata
+```javascript
+import { createTagControllerFrom } from 'id3-wasm'
+
+await fetch('https://upload.wikimedia.org/wikipedia/commons/b/bd/%27Tis_a_faded_picture_by_Florrie_Forde.mp3').then(async response => {
+  const buffer = new Uint8Array(await response.arrayBuffer())
+
+  const tagController = await createTagControllerFrom(buffer)
+
+  // Getting metadata using the controller API
+  const metadata = tagController.getMetadata()
+  expectToContain(metadata, {
+    artist: 'Florrie Forde\r',
+    title: '\'Tis a faded picture\r',
+    album: 'Edison Amberol: 12255\r'
+  })
+  metadata.free()
+
+  // Changing the metadata
+  tagController.setYear(1910)
+
+  // Getting the resulting Uint8Array (the tagged file's buffer),
+  // which can be a used with the File System API or for a download
+  const taggedBuffer = tagController.putTagInto(buffer)
+  expectToEqual(taggedBuffer.length > 0, true)
+
+  // IMPORTANT! Don't forget to destroy the tagController!
+  tagController.free()
+})
+```
+
+## API
+See [generated docs](https://steve-keep.github.io/id3-wasm/docs/).
+
+## Contributing
+Clone this repository. You should setup & build the Rust project by running `make setup` and `make build`.
+To run the examples locally, you need to `cd` into `www` and run `npm start`.
+Now you should be able to access the examples at `localhost:8080`.
+
+If you have any questions, feel free to open an issue!
