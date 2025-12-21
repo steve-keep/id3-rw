@@ -35,8 +35,11 @@ jobs:
     - name: Install dependencies
       run: pnpm install
 
-    - name: Build Wasm and Website
-      run: pnpm build
+    - name: Build id3-wasm package
+      run: pnpm --filter id3-wasm build
+
+    - name: Build demo package
+      run: pnpm --filter demo build
 
     - name: Deploy website
       uses: peaceiris/actions-gh-pages@v4
