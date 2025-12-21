@@ -17,7 +17,7 @@ jobs:
     - name: Install pnpm
       uses: pnpm/action-setup@v2
       with:
-        version: 8
+        version: 9
 
     - name: Install stable Rust and wasm-pack
       uses: actions-rs/toolchain@v1
@@ -32,8 +32,11 @@ jobs:
     - name: Install dependencies
       run: pnpm install
 
-    - name: Build Wasm package
-      run: pnpm build
+    - name: Build id3-wasm package
+      run: pnpm --filter id3-wasm build
+
+    - name: Build demo package
+      run: pnpm --filter demo build
 
     - name: Run tests
       run: pnpm test
