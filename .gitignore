@@ -9,7 +9,6 @@ wasm-pack.log
 
 # Node dependencies & build outputs
 node_modules/
-pnpm-lock.yaml
 /packages/demo/dist/
 
 # Log files
