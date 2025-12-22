@@ -32,11 +32,16 @@ jobs:
     - name: Install dependencies
       run: pnpm install
 
-    - name: Build id3-wasm package
-      run: pnpm --filter id3-wasm build
+    - name: Build
+      run: pnpm build
 
-    - name: Build demo package
-      run: pnpm --filter demo build
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps
 
-    - name: Run tests
+    - name: Run unit tests
       run: pnpm test
+
+    - name: Run E2E tests
+      run: |
+        pnpm start > /dev/null 2>&1 &
+        pnpm run test:e2e
