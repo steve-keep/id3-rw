@@ -57,5 +57,5 @@ jobs:
 
     - name: Publish to npm
       run: |
-        npm config ls -l
-        pnpm --filter id3-wasm publish --no-git-checks
+        cd packages/lib
+        npm publish --provenance --access public
