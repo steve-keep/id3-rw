@@ -57,6 +57,5 @@ jobs:
 
     - name: Publish to npm
       run: |
-        npm config ls -l
         cd packages/lib
-        pnpm publish --no-git-checks
+        npm publish --provenance --access public
