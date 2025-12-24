@@ -5,4 +5,3 @@ tests/
 # Config files
 vitest.config.ts
 tsconfig.json
-.gitignore
