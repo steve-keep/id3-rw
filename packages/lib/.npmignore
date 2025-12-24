@@ -1,0 +1,8 @@
+# Source and test files
+src/
+tests/
+
+# Config files
+vitest.config.ts
+tsconfig.json
+.gitignore
