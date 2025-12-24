@@ -1,0 +1,6 @@
+# Source and test files
+tests/
+
+# Config files
+vitest.config.ts
+tsconfig.json
