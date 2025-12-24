@@ -1,6 +1,6 @@
 {
   "name": "id3-wasm",
-  "version": "0.0.24",
+  "version": "0.0.21",
   "description": "Insanely quick ID3 reading & writing for JavaScript powered by WebAssembly.",
   "type": "module",
   "exports": {
@@ -35,8 +35,7 @@
   },
   "homepage": "https://github.com/steve-keep/id3-wasm#readme",
   "files": [
-    "dist",
-    "src",
+    "dist/**",
     "wasm/**",
     "LICENSE",
     "README.md"
