@@ -1,6 +1,6 @@
-# Source and test files
+src/
 tests/
-
-# Config files
-vitest.config.ts
+node_modules/
+*.log
 tsconfig.json
+vitest.config.ts
