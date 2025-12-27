@@ -54,6 +54,12 @@ pnpm start
 
 This will open the demo app in your browser, usually at `http://localhost:8080`.
 
+### Verifying the Build
+
+To ensure the library is built correctly and can be imported, a simple test page is included. After starting the development server with `pnpm start`, you can access it at `http://localhost:8080/test.html`.
+
+This page performs a basic import and initialization of the `id3-wasm` module. If it displays a success message, you can be confident that the library is working correctly in your environment.
+
 ### Running Tests
 
 The project uses Vitest for unit tests and Playwright for end-to-end tests.
